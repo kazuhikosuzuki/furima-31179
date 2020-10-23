@@ -5,7 +5,6 @@
 | nick_name          | string | null: false                  |
 | email              | string | null: false,uniqueness: true |
 | password           | string | null: false,uniqueness: true |
-| encrypted_password | string | null: false,uniqueness: true |
 | last_name          | string | null: false                  |
 | first_name         | string | null: false                  |
 | last_name_kana     | string | null: false                  |
@@ -52,8 +51,9 @@
 | postal_code    | string     | null: false,                   |
 | prefecture_id  | integer    | null: false,                   |
 | city           | string     | null: false                    |
-| building_name  | string     | 　　　　　　　                   |
+| house_number   | string     | null:false                     |
+| building_name  | string     |                                |
 | phone_number   | string     | null: false                    |
-| purchases      | references | null: false, foreign_key: true |
+| purchase       | references | null: false, foreign_key: true |
 ### Association
 - belongs_to :purchase

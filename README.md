@@ -10,7 +10,7 @@
 | first_name         | string | null: false                  |
 | last_name_kana     | string | null: false                  |
 | first_name_kana    | string | null: false                  |
-| date_of_birth      | date   | null: false                  |
+| birth_day          | date   | null: false                  |
 ### Association
 
 - has_many :goods
@@ -20,8 +20,7 @@
 
 | Column                | Type            | Options                        |
 | --------------------- | --------------- | ------------------------------ |
-| image                 | (ActiveStorage) |                                |
-| user_id               | references      | null: false, foreign_key: true |
+| user                  | references      | null: false, foreign_key: true |
 | shop_name             | string          | null: false                    |
 | description           | text            | null: false                    |
 | price                 | integer         | null: false                    |
@@ -31,19 +30,18 @@
 | prefecture_id         | integer         | null: false                    |
 | scheduled_delivery_id | integer         | null: false                    |
 ### Association
-
+- has_one :purchase
 - belongs_to :user
-- belongs_to :purchases
 
 ## purchases テーブル
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| user_id  | references | null: false, foreign_key: true |
-| goods_id | references | null: false, foreign_key: true |
+| user     | references | null: false, foreign_key: true |
+| good     | references | null: false, foreign_key: true |
 ### Association
 
-- has_one :goods
+- belongs_to :good
 - has_one :purchases_info
 - belongs_to :user
 
@@ -52,10 +50,10 @@
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
 | postal_code    | string     | null: false,                   |
-| prefecture_id  | integer    | null: false, foreign_key: true |
-| city           | string     | null: false                    |
+| prefecture_id  | integer    | null: false,                   |
+| city           | string     |                                |
 | building_name  | string     | null: false                    |
 | phone_number   | string     | null: false                    |
-| purchases_id   | references | null: false                    |
+| purchases      | references | null: false, foreign_key: true |
 ### Association
-- belongs_to :purchases
+- belongs_to :purchase

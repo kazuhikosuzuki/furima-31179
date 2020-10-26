@@ -65,3 +65,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rails'
 end
+
+group :production do
+  gem 'rails_12factor'
+end

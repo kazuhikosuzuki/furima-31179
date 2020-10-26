@@ -1,4 +1,24 @@
 class GoodsController < ApplicationController
   def index
+    @goods = Good.order("created_at DESC")
+  end
+
+  def new
+    @good = Good.new
+  end
+
+  def create
+    @good = Good.new(good_params)
+    if @good.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def good_params
+    params.require(:good).permit(:shop_name,:text,:price,:category_id,:condition_id,:shipping_expense_id,:prefecture_id,:scheduled_delivery_id)
   end
 end

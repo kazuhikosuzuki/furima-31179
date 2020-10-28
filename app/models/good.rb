@@ -15,7 +15,7 @@ class Good < ApplicationRecord
     validates :price, format: { with: hankaku_num }
     validates :price, numericality: { greater_than: 299 }
     validates :price, numericality: { less_than: 9_999_999 }
-    validates :category, :condition, :scheduled_delivery, :shipping_expense, :prefecture
+    validates :category_id, :condition_id, :scheduled_delivery_id, :shipping_expense_id, :prefecture_id
     # 空の投稿を保存できないようにする
     validates :shop_name, :description, :price
     # ジャンルの選択が「--」の時は保存できないようにする

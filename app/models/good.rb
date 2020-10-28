@@ -23,6 +23,7 @@ class Good < ApplicationRecord
     validates :condition_id, numericality: { other_than: 1 }
     validates :scheduled_delivery_id, numericality: { other_than: 1 }
     validates :shipping_expense_id, numericality: { other_than: 1 }
+    validates :prefecture_id, numericality: { other_than: 1 }
     validates :image, unless: :was_attached?
   end
   def was_attached?

@@ -19,12 +19,15 @@ class Good < ApplicationRecord
     # 空の投稿を保存できないようにする
     validates :shop_name, :description, :price
     # ジャンルの選択が「--」の時は保存できないようにする
-    validates :category_id, numericality: { other_than: 1 }
-    validates :condition_id, numericality: { other_than: 1 }
-    validates :scheduled_delivery_id, numericality: { other_than: 1 }
-    validates :shipping_expense_id, numericality: { other_than: 1 }
-    validates :prefecture_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :condition_id
+    validates :scheduled_delivery_id
+    validates :shipping_expense_id
+    validates :prefecture_id
+    end
     validates :image, unless: :was_attached?
+  
   end
   def was_attached?
     image.attached?

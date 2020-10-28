@@ -78,12 +78,12 @@ RSpec.describe 'Good', type: :model do
       @good.valid?
       expect(@good.errors.full_messages).to include("Price can't be blank")
     end
-    it '価格の範囲が、¥300以下だと登録できない' do
+    it '価格の範囲が、¥300より低いと登録できない' do
       @good.price = '299'
       @good.valid?
       expect(@good.errors.full_messages).to include('Price must be greater than 299')
     end
-    it '価格の範囲が、¥9,999,999以上では登録できない' do
+    it '価格の範囲が、¥9,999,999より高いと登録できない' do
       @good.price = '10000000'
       @good.valid?
       expect(@good.errors.full_messages).to include('Price must be less than 9999999')

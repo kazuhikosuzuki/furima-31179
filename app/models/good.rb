@@ -10,22 +10,22 @@ class Good < ApplicationRecord
 
   has_one_attached :image
 
-  
-    
-    validates :image, presence: true
-    validates :category, :condition,:scheduled_delivery,:shipping_expense,:prefecture , presence: true
-    #空の投稿を保存できないようにする
-    validates :shop_name, :description, :price, presence: true
-
-    #ジャンルの選択が「--」の時は保存できないようにする
-    validates :category_id, numericality: { other_than: 1 } 
-    validates :condition_id, numericality: { other_than: 1 } 
+  with_options presence: true do
+    hankaku_num = /\A[0-9]+\z/
+    validates :price, format: { with: hankaku_num }
+    validates :price, numericality: { greater_than: 299 }
+    validates :price, numericality: { less_than: 9_999_999 }
+    validates :category, :condition, :scheduled_delivery, :shipping_expense, :prefecture
+    # 空の投稿を保存できないようにする
+    validates :shop_name, :description, :price
+    # ジャンルの選択が「--」の時は保存できないようにする
+    validates :category_id, numericality: { other_than: 1 }
+    validates :condition_id, numericality: { other_than: 1 }
     validates :scheduled_delivery_id, numericality: { other_than: 1 }
-    validates :shipping_expense_id, numericality: { other_than: 1 } 
-    validates :content, presence: true, unless: :was_attached?
-
-  def was_attached?
-    self.image.attached?
+    validates :shipping_expense_id, numericality: { other_than: 1 }
+    validates :image, unless: :was_attached?
   end
-     
+  def was_attached?
+    image.attached?
+  end
 end

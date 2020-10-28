@@ -1,6 +1,6 @@
 class GoodsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :edit, :show]
   def index
-    @goods = Good.order("created_at DESC")
   end
 
   def new
@@ -8,7 +8,6 @@ class GoodsController < ApplicationController
   end
 
   def create
-    
     @good = Good.new(good_params)
     if @good.save
       redirect_to root_path
@@ -20,7 +19,6 @@ class GoodsController < ApplicationController
   private
 
   def good_params
-    params.require(:good).permit(:shop_name,:description,:price, :image,:category_id, :condition_id, :shipping_expense_id, :prefecture_id, :scheduled_delivery_id).merge(user_id: current_user.id) 
+    params.require(:good).permit(:shop_name, :description, :price, :image, :category_id, :condition_id, :shipping_expense_id, :prefecture_id, :scheduled_delivery_id).merge(user_id: current_user.id)
   end
-
 end

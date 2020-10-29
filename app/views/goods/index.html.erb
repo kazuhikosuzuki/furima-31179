@@ -126,7 +126,7 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
-      <% if @goods.nil?%>
+      <% unless @goods.nil?%>
       <% @goods.each do |good| %>
       <li class='list'>
         <%= link_to "#" do %>

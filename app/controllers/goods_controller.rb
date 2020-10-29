@@ -1,8 +1,8 @@
 class GoodsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :edit, :show]
   def index
-    @goods = Good.all.order("created_at DESC")
-    @goods = Good.includes(:user)
+    @goods = Good.all
+    @goods = Good.includes(:user).order("created_at DESC")
   end
 
   def new

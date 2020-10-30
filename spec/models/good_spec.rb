@@ -31,7 +31,7 @@ RSpec.describe 'Good', type: :model do
     it 'カテゴリーの情報が１ではば登録できない' do
       @good.category_id = 1
       @good.valid?
-      expect(@good.errors.full_messages).to include("Category must be other than 1")
+      expect(@good.errors.full_messages).to include('Category must be other than 1')
     end
     it '商品の状態についての情報がなければ登録できない' do
       @good.condition_id = nil
@@ -41,7 +41,7 @@ RSpec.describe 'Good', type: :model do
     it '商品の状態の情報が１では登録できない' do
       @good.condition_id = 1
       @good.valid?
-      expect(@good.errors.full_messages).to include("Condition must be other than 1")
+      expect(@good.errors.full_messages).to include('Condition must be other than 1')
     end
     it '配送料の負担についての情報がなければ登録できない' do
       @good.shipping_expense_id = nil
@@ -51,7 +51,7 @@ RSpec.describe 'Good', type: :model do
     it '配送料の負担についての情報が１では登録できない' do
       @good.shipping_expense_id = 1
       @good.valid?
-      expect(@good.errors.full_messages).to include("Shipping expense must be other than 1")
+      expect(@good.errors.full_messages).to include('Shipping expense must be other than 1')
     end
     it '発送元の地域についての情報がなければ登録できない' do
       @good.prefecture_id = nil
@@ -61,7 +61,7 @@ RSpec.describe 'Good', type: :model do
     it '発送元の地域についての情報が１では登録できない' do
       @good.prefecture_id = 1
       @good.valid?
-      expect(@good.errors.full_messages).to include("Prefecture must be other than 1")
+      expect(@good.errors.full_messages).to include('Prefecture must be other than 1')
     end
     it '発送までの日数についての情報がなければ登録できない' do
       @good.scheduled_delivery_id = nil
@@ -71,7 +71,7 @@ RSpec.describe 'Good', type: :model do
     it '発送までの日数についての情報が１では登録できない' do
       @good.scheduled_delivery_id = 1
       @good.valid?
-      expect(@good.errors.full_messages).to include("Scheduled delivery must be other than 1")
+      expect(@good.errors.full_messages).to include('Scheduled delivery must be other than 1')
     end
     it '価格についての情報がなければ登録できない' do
       @good.price = nil

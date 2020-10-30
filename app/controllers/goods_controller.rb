@@ -8,6 +8,24 @@ class GoodsController < ApplicationController
     @good = Good.new
   end
 
+  def show
+    @good = Good.find(params[:id])
+  end
+  def update
+    @good = Good.find(params[:id])
+   if @good.update(good_params)
+    redirect_to good_path
+    else
+    render :edit
+    end
+  end
+
+  def edit
+    @good = Good.find(params[:id])
+  end
+
+
+  
   def create
     @good = Good.new(good_params)
     if @good.save

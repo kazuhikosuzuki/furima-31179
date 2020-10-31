@@ -44,7 +44,7 @@
 - has_one :purchases_info
 - belongs_to :user
 
-## purchases_info テーブル
+## purchases_infos テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |

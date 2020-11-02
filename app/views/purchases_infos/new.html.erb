@@ -32,6 +32,7 @@
     
 
     <%= form_with model:@purchase_adress,url:good_purchases_infos_path(@good.id),id: 'charge-form', class: 'transaction-form-wrap',local: true  do |f| %>
+    <%=render 'shared/error_messages', model: f.object %>
 
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>

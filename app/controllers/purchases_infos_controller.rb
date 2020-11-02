@@ -1,5 +1,5 @@
 class PurchasesInfosController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:edit]
   def new
     @good = Good.find(params[:good_id])
     @purchase_adress = PurchaseAdress.new

@@ -6,10 +6,8 @@ class PurchasesInfosController < ApplicationController
   end
 
   def create
-  
     @good = Good.find(params[:good_id])
     @purchase_adress = PurchaseAdress.new(purchases_info_params)
-    binding.pry
     if @purchase_adress.valid? 
     @purchase_adress.save
     pay_item

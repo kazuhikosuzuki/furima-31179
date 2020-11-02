@@ -21,9 +21,9 @@ RSpec.describe PurchaseAdress, type: :model do
     expect(@purchase_adress.errors.full_messages).to include("Postal code can't be blank")
   end
   it 'postal_codeにハイフンがあると保存できないこと' do
-    @purchase_adress.postal_code = 1234567
+    @purchase_adress.postal_code = 1_234_567
     @purchase_adress.valid?
-    expect(@purchase_adress.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+    expect(@purchase_adress.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
   end
 
   it 'house_numberが空だと保存できないこと' do
@@ -40,7 +40,7 @@ RSpec.describe PurchaseAdress, type: :model do
   it 'prefectureが1だと保存できないこと' do
     @purchase_adress.prefecture_id = '1'
     @purchase_adress.valid?
-    expect(@purchase_adress.errors.full_messages).to include("Prefecture must be other than 1")
+    expect(@purchase_adress.errors.full_messages).to include('Prefecture must be other than 1')
   end
 
   it 'phone_numberが空だと保存できないこと' do
@@ -52,19 +52,19 @@ RSpec.describe PurchaseAdress, type: :model do
   it 'phone_numberが全角数字だと保存できないこと' do
     @purchase_adress.phone_number = '１２３４５６７８９０１'
     @purchase_adress.valid?
-    expect(@purchase_adress.errors.full_messages).to include("Phone number Enter only numbers from 0 to 9 just 11 characters")
+    expect(@purchase_adress.errors.full_messages).to include('Phone number Enter only numbers from 0 to 9 just 11 characters')
   end
 
   it 'phone_numberが11文字を超えると保存できないこと' do
-    @purchase_adress.phone_number = 123456789012
+    @purchase_adress.phone_number = 123_456_789_012
     @purchase_adress.valid?
-    expect(@purchase_adress.errors.full_messages).to include("Phone number Enter only numbers from 0 to 9 just 11 characters")
+    expect(@purchase_adress.errors.full_messages).to include('Phone number Enter only numbers from 0 to 9 just 11 characters')
   end
 
   it 'phone_numberが11文字を下回ると保存できないこと' do
-    @purchase_adress.phone_number = 1234567890
+    @purchase_adress.phone_number = 1_234_567_890
     @purchase_adress.valid?
-    expect(@purchase_adress.errors.full_messages).to include("Phone number Enter only numbers from 0 to 9 just 11 characters")
+    expect(@purchase_adress.errors.full_messages).to include('Phone number Enter only numbers from 0 to 9 just 11 characters')
   end
 
   it 'phone_numberが空だと保存できないこと' do
@@ -72,5 +72,4 @@ RSpec.describe PurchaseAdress, type: :model do
     @purchase_adress.valid?
     expect(@purchase_adress.errors.full_messages).to include("Phone number can't be blank")
   end
-
 end

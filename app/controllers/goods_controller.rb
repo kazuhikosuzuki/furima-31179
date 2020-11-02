@@ -1,6 +1,6 @@
 class GoodsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_prototype, only: [:edit, :show, :update]
+  before_action :find_good, only: [:edit, :show, :update]
   def index
     @goods = Good.includes(:user).order('created_at DESC')
   end
@@ -38,7 +38,7 @@ class GoodsController < ApplicationController
     params.require(:good).permit(:shop_name, :description, :price, :image, :category_id, :condition_id, :shipping_expense_id, :prefecture_id, :scheduled_delivery_id).merge(user_id: current_user.id)
   end
 
-  def set_prototype
+  def find_good
     @good = Good.find(params[:id])
   end
 

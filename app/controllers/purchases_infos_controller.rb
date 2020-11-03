@@ -1,6 +1,6 @@
 class PurchasesInfosController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :find_good, only: [:new, :creare]
+  before_action :find_good_id, only: [:new, :creare]
 
 
   def new
@@ -34,6 +34,10 @@ class PurchasesInfosController < ApplicationController
       card: purchases_info_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def find_good_id
+    @good = Good.find(params[:good_id])
   end
 
 end

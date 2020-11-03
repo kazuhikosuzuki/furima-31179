@@ -1,5 +1,5 @@
-<%# cssは商品出品のものを併用しています。
-app/assets/stylesheets/items/new.css %>
+
+
 
 <div class="items-sell-contents">
   <header class="items-sell-header">
@@ -81,9 +81,9 @@ app/assets/stylesheets/items/new.css %>
         <%= f.collection_select(:scheduled_delivery_id, ScheduledDelivery.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
-    <%# /配送について %>
+  
 
-    <%# 販売価格 %>
+   
     <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
@@ -112,9 +112,9 @@ app/assets/stylesheets/items/new.css %>
         </div>
       </div>
     </div>
-    <%# /販売価格 %>
+  
 
-    <%# 注意書き %>
+   
     <div class="caution">
       <p class="sentence">
         <a href="#">禁止されている出品、</a>
@@ -132,13 +132,13 @@ app/assets/stylesheets/items/new.css %>
         に同意したことになります。
       </p>
     </div>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
+    
+   
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
       <%=link_to 'もどる', "#", class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+  
   </div>
   <% end %>
 

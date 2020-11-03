@@ -19,7 +19,7 @@
   </div>
   
 
-  <%# FURIMAが選ばれる3つの理由部分 %>
+ 
   <div class='select-reason-contents'>
     <h2 class='title'>
       FURIMAが選ばれる3つの理由
@@ -60,9 +60,9 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAが選ばれる3つの理由部分 %>
+ 
 
-  <%# 画面中央の「会員数日本一位」帯部分 %>
+ 
   <div class='ad-contents'>
     <h2 class='ad-title'>
       会員数日本一位
@@ -81,9 +81,9 @@
       <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面中央の「会員数日本一位」帯部分 %>
+ 
 
-  <%# FURIMAの特徴 %>
+  
   <div class='feature-contents'>
     <h2 class='title'>
       FURIMAの特徴
@@ -118,9 +118,9 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAの特徴 %>
+  
 
-  <%# 商品一覧 %>
+  
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
@@ -133,11 +133,11 @@
         <div class='item-img-content'>
           <%= image_tag good.image, class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <%# <div class='sold-out'> %>
-            <%# <span>Sold Out!!</span> %>
-          <%# </div> %>
-          <%# //商品が売れていればsold outを表示しましょう %>
+          <% if good.purchase!= nil %>
+          <div class='sold-out'>
+             <span>Sold Out!!</span>
+           </div> 
+          <% end %>
 
         </div>
         <div class='item-info'>
@@ -157,8 +157,8 @@
       </li>
       
 
-      <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+    
+    
       <% else %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -178,11 +178,10 @@
         <% end %>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# /商品がない場合のダミー %>
+
     </ul>
   </div>
-  <%# /商品一覧 %>
+
 </div>
 
 <div class='purchase-btn'>

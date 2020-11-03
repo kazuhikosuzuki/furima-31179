@@ -1,9 +1,9 @@
 class PurchasesInfosController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :find_good, only: [:new, :creare]
 
 
   def new
-    @good = Good.find(params[:good_id])
     if current_user.id == @good.user_id || @good.purchase != nil
       redirect_to root_path
     end
@@ -11,7 +11,6 @@ class PurchasesInfosController < ApplicationController
   end
 
   def create
-    @good = Good.find(params[:good_id])
     @purchase_adress = PurchaseAdress.new(purchases_info_params)
     if @purchase_adress.valid?
       @purchase_adress.save

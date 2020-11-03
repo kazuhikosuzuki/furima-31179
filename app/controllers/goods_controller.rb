@@ -36,7 +36,7 @@ class GoodsController < ApplicationController
     good = Good.find(params[:id])
     good.destroy
     redirect_to root_path
-    end
+  end
 
   private
 

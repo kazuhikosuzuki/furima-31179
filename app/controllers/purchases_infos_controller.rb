@@ -2,11 +2,8 @@ class PurchasesInfosController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :find_good_id, only: [:new, :creare]
 
-
   def new
-    if current_user.id == @good.user_id || @good.purchase != nil
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @good.user_id || !@good.purchase.nil?
     @purchase_adress = PurchaseAdress.new
   end
 
@@ -39,5 +36,4 @@ class PurchasesInfosController < ApplicationController
   def find_good_id
     @good = Good.find(params[:good_id])
   end
-
 end

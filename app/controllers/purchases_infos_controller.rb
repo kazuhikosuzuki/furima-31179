@@ -1,7 +1,12 @@
 class PurchasesInfosController < ApplicationController
-  before_action :authenticate_user!, only: [:edit]
+  before_action :authenticate_user!, only: [:new]
+
+
   def new
     @good = Good.find(params[:good_id])
+    if current_user.id == @good.user_id || @good.purchase != nil
+      redirect_to root_path
+    end
     @purchase_adress = PurchaseAdress.new
   end
 
@@ -31,4 +36,5 @@ class PurchasesInfosController < ApplicationController
       currency: 'jpy'
     )
   end
+
 end

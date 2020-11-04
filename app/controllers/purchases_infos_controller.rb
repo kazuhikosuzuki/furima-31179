@@ -1,6 +1,6 @@
 class PurchasesInfosController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :find_good_id, only: [:new, :creare]
+  before_action :find_good_id, only: [:new, :create]
 
   def new
     redirect_to root_path if current_user.id == @good.user_id || !@good.purchase.nil?

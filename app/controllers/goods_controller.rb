@@ -1,6 +1,6 @@
 class GoodsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_good, only: [:edit, :show, :update]
+  before_action :find_good, only: [:edit, :show, :update, :destroy]
   def index
     @goods = Good.includes(:user).order('created_at DESC')
   end
@@ -29,6 +29,13 @@ class GoodsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def destroy
+    if user_signed_in? && current_user.id == @good.user.id
+      @good.destroy
+      redirect_to root_path
     end
   end
 

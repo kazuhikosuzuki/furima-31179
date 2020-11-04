@@ -34,8 +34,8 @@ class GoodsController < ApplicationController
 
   def destroy
     if user_signed_in? && current_user.id == @good.user.id
-    @good.destroy
-    redirect_to root_path
+      @good.destroy
+      redirect_to root_path
     end
   end
 
